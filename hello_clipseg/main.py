@@ -1,7 +1,11 @@
 import typer
 from hello_clipseg.cli import app
 from hello_clipseg.util.load_image import get_image_from_url
-from hello_clipseg.util.plot import overlay_masks_on_image, plot_output_masks
+from hello_clipseg.util.plot import (
+    convert_preds_to_image_size,
+    overlay_masks_on_image,
+    plot_output_masks,
+)
 from hello_clipseg.util.segment import segment_image
 
 
@@ -16,5 +20,6 @@ if __name__ == "__main__":
     )
     prompts = ["plate", "table", "fruit"]
     mask = segment_image(image=image, prompts=prompts)
+    print(convert_preds_to_image_size(mask, original_image_size=image.size).shape)
     plot_output_masks(image=image, preds=mask, prompts=prompts)
     overlay_masks_on_image(image=image, preds=mask, prompts=prompts)
