@@ -6,7 +6,7 @@ authors = ["Your Name <you@example.com>"]
 readme = "README.md"
 
 [tool.poetry.scripts]
-clipseg = "hello_clipseg.main:app"
+clipseg = "hello_clipseg.__main__:main"
 
 [tool.poetry.dependencies]
 python = "^3.12"
